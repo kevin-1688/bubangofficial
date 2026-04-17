@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary SEO -->
+<title>BÚ-BĀNG 無望 — Train your body. Face your fear. Carry the silence of history.</title>
+<meta name="description" content="A fitness-driven narrative RPG set in 1950s Taiwan during the White Terror. Your body is the controller. Your sweat is the testimony.">
+<meta name="keywords" content="BÚ-BĀNG, 無望, fitness RPG, Taiwan White Terror, indie game, narrative RPG, MediaPipe, 白色恐怖, 台灣遊戲">
+<meta name="author" content="Awack Studio">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://bubang.awack.studio/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bubang.awack.studio/">
+<meta property="og:title" content="BÚ-BĀNG 無望 — Your body is the last frontier of freedom.">
+<meta property="og:description" content="A fitness-driven narrative RPG set in 1950s Taiwan. Train your body. Face your fear. Carry the silence of history.">
+<meta property="og:image" content="https://bubang.awack.studio/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="BÚ-BĀNG 無望">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BÚ-BĀNG 無望 — Your body is the last frontier of freedom.">
+<meta name="twitter:description" content="A fitness-driven narrative RPG set in 1950s Taiwan. Train your body. Face your fear. Carry the silence of history.">
+<meta name="twitter:image" content="https://bubang.awack.studio/og-image.png">
+
+<!-- Theme -->
+<meta name="theme-color" content="#111118">
+<meta name="color-scheme" content="dark">
+
+<!-- Favicon placeholder -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23111118'/><text y='.9em' font-size='90' x='5'>望</text></svg>">
+
+<!-- Preload critical font subset -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Noto+Serif+TC:wght@300;400;700&family=IM+Fell+English:ital@1&family=Courier+Prime:wght@400&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Noto+Serif+TC:wght@300;400;700&family=IM+Fell+English:ital@0;1&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Stylesheet -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">
+    BÚ-BĀNG
+    <span>無　望　｜　2026</span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#manifesto" class="nav-link">Vision</a></li>
+    <li><a href="#acts" class="nav-link">Story</a></li>
+    <li><a href="#sf-system" class="nav-link">System</a></li>
+    <li><a href="#exercise" class="nav-link">Training</a></li>
+    <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+  </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="開啟選單" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <ul>
+    <li><a href="#manifesto" class="mobile-link">Vision</a></li>
+    <li><a href="#acts" class="mobile-link">Story</a></li>
+    <li><a href="#sf-system" class="mobile-link">System</a></li>
+    <li><a href="#exercise" class="mobile-link">Training</a></li>
+    <li><a href="#roadmap" class="mobile-link">Roadmap</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="hero-year">1952 — 1955 ｜ TAIWAN</div>
+  <div class="hero-title">
+    <h1 class="hero-title-main">BÚ-BĀNG</h1>
+    <span class="hero-chinese">無　望</span>
+    <p class="hero-tagline">
+      In an era where everything is stripped away,<br>
+      your body is the last frontier of freedom.
+      <span class="hero-tagline-zh">在一切都被剝奪的年代，身體是最後的自由。</span>
+    </p>
+  </div>
+  <div class="hero-cta-group">
+    <a href="#manifesto" class="btn-primary"><span>了解更多 — Discover</span></a>
+    <a href="#roadmap" class="btn-ghost">開發進度 Roadmap →</a>
+  </div>
+
+  <!-- EARLY BIRD SIGNUP -->
+  <div class="hero-signup reveal" style="margin-top:3rem; text-align:center;">
+    <p class="signup-label">加入早鳥名單 — Be the first to know</p>
+    <form class="signup-form" id="signup-form" novalidate>
+      <input
+        type="email"
+        id="signup-email"
+        name="email"
+        class="signup-input"
+        placeholder="your@email.com"
+        autocomplete="email"
+        aria-label="Email address"
+        required
+      >
+      <button type="submit" class="signup-btn">
+        <span>登記 Join</span>
+      </button>
+    </form>
+    <p class="signup-note" id="signup-msg" aria-live="polite"></p>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="manifesto-label">Vision Statement</div>
+  <p class="manifesto-text reveal">
+    BÚ-BĀNG 是一款<span class="highlight">敘事驅動的體感生存 RPG</span>。
+    它將高強度徒手健身轉化為極權統治下的生存代價，
+    讓玩家透過肉體的勞動，穿越時空回到 1950 年代的台灣白色恐怖時期，
+    體驗一段從城市到荒野、從噤聲到終局的追尋之旅。
+  </p>
+  <div class="manifesto-quote reveal reveal-delay-1">
+    <blockquote>
+      "Sweat is the silent testimony; breath is the rhythm of survival."
+    </blockquote>
+    <cite>— BÚ-BĀNG Core Tagline</cite>
+  </div>
+  <p class="manifesto-text reveal reveal-delay-2">
+    這不只是一個虛構故事。它是對台灣這片土地<span class="highlight">痛楚記憶的溫柔凝視</span>。
+    透過遊戲這門藝術，讓年輕世代不再透過教科書，而是透過「體感」
+    去理解前輩在爭取自由時付出的肉體代價。
+  </p>
+  <div class="section-divider"></div>
+</section>
+
+<!-- FIVE ACTS -->
+<section id="acts">
+  <div class="section-header reveal">
+    <span class="section-header-label">Narrative Structure</span>
+    <h2>五幕敘事<span>The Five Acts</span></h2>
+  </div>
+  <div class="acts-track">
+    <div class="act-card reveal" data-act="1">
+      <span class="act-number">ACT I</span>
+      <div class="act-location">Taipei</div>
+      <span class="act-location-zh">台北・大稻埕</span>
+      <span class="act-theme">Loss — 失去</span>
+      <p class="act-desc">壓抑與困惑。感受到「視線」的重壓。查戶口的手電筒，窄長樓梯，收音機的雜訊。</p>
+    </div>
+    <div class="act-card reveal reveal-delay-1" data-act="2">
+      <span class="act-number">ACT II</span>
+      <div class="act-location">Keelung</div>
+      <span class="act-location-zh">基隆港</span>
+      <span class="act-theme">Disappearance — 消失</span>
+      <p class="act-desc">迷惘與寒冷。在霧中尋找不存在的出口。鏽蝕的貨輪，散不開的濃霧，無人的空港。</p>
+    </div>
+    <div class="act-card reveal reveal-delay-2" data-act="3">
+      <span class="act-number">ACT III</span>
+      <div class="act-location">Mountain</div>
+      <span class="act-location-zh">山區部落</span>
+      <span class="act-theme">Trust — 信任</span>
+      <p class="act-desc">喘息與自省。在火光中重新學會信任。石板屋，深夜的火堆，整款遊戲第一處暖色調。</p>
+    </div>
+    <div class="act-card reveal reveal-delay-3" data-act="4">
+      <span class="act-number">ACT IV</span>
+      <div class="act-location">Green Island</div>
+      <span class="act-location-zh">綠島</span>
+      <span class="act-theme">Deprivation — 剝奪</span>
+      <p class="act-desc">枯燥與極限。肉體與意志的最終對抗。名字被抹去，換成編號。碎石場的勞動。</p>
+    </div>
+    <div class="act-card reveal" data-act="5">
+      <span class="act-number">ACT V</span>
+      <div class="act-location">Machangding</div>
+      <span class="act-location-zh">馬場町</span>
+      <span class="act-theme">Memory — 記憶</span>
+      <p class="act-desc">釋然與沈默。迎接歷史黎明前的最冷一刻。新店溪的晨霧，浸血的土堆，芒草花。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="section-header reveal">
+    <span class="section-header-label">Design Philosophy</span>
+    <h2>四大設計支柱<span>Core Pillars</span></h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-item reveal" data-num="I">
+      <span class="pillar-num">PILLAR 01</span>
+      <div class="pillar-title-en">Body as Fate</div>
+      <span class="pillar-title-zh">身體即命運</span>
+      <p class="pillar-desc">在極權統治下，當所有自由都被剝奪，唯一屬於你且能對抗壓迫的，只有你的身體。玩家在現實中的流汗直接轉化為主角在遊戲中的生存機率。</p>
+    </div>
+    <div class="pillar-item reveal reveal-delay-1" data-num="II">
+      <span class="pillar-num">PILLAR 02</span>
+      <div class="pillar-title-en">The Weight of Silence</div>
+      <span class="pillar-title-zh">沈默的重量</span>
+      <p class="pillar-desc">存活不是靠戰鬥，而是靠「隱藏」。守秘密的代價是巨大的精神耗損。遊戲中的「沈默」選項需要玩家在鏡頭前保持絕對靜止。</p>
+    </div>
+    <div class="pillar-item reveal reveal-delay-2" data-num="III">
+      <span class="pillar-num">PILLAR 03</span>
+      <div class="pillar-title-en">Psychological Drift</div>
+      <span class="pillar-title-zh">地理敘事的心理位移</span>
+      <p class="pillar-desc">地圖的移動象徵主角與「社會」的連結逐漸斷裂，直到剩下純粹的人性。從台北的「雜音噪音」到馬場町的「死寂」。</p>
+    </div>
+    <div class="pillar-item reveal reveal-delay-3" data-num="IV">
+      <span class="pillar-num">PILLAR 04</span>
+      <div class="pillar-title-en">Blurred Moral Mirror</div>
+      <span class="pillar-title-zh">模糊的道德鏡像</span>
+      <p class="pillar-desc">沒有絕對的英雄。遊戲不提供廉價的英雄主義，也不告訴你「這是不是好結局」。每個決定都是在生存與尊嚴之間掙扎。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SILENCE / FEAR -->
+<section id="sf-system">
+  <div class="sf-container">
+    <div class="section-header reveal" style="text-align:center; padding-bottom:0;">
+      <span class="section-header-label">Core Mechanic</span>
+      <h2>SILENCE / FEAR<span>隱藏的雙軌系統</span></h2>
+    </div>
+    <div class="sf-intro">
+      <div class="sf-side silence reveal">
+        <h3>SILENCE</h3>
+        <span class="sf-side-sub">沉默值</span>
+        <p>沈默能讓你和戰友活下去，但會增加孤獨感與噩夢發生的頻率。你永遠看不到確切的數值，只能從角色的顫抖感知它的存在。</p>
+        <div class="sf-bar-demo">
+          <div class="sf-bar-label"><span>LOW</span><span>HIGH</span></div>
+          <div class="sf-bar"><div class="sf-bar-fill"></div></div>
+        </div>
+      </div>
+      <div class="sf-side fear reveal reveal-delay-1">
+        <h3>FEAR</h3>
+        <span class="sf-side-sub">恐懼值</span>
+        <p>畫面邊緣的暗化，心跳聲的加重。當恐懼值高時，MediaPipe 動作判定窗口縮小——身體的恐懼直接反映在動作控制上。</p>
+        <div class="sf-bar-demo">
+          <div class="sf-bar-label"><span>LOW</span><span>HIGH</span></div>
+          <div class="sf-bar"><div class="sf-bar-fill"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sf-warning reveal">
+      <p>
+        「你不知道自己有多害怕，直到你在某個關鍵時刻做出了那個選擇。」<br>
+        <em style="font-size:0.85em; color:var(--text-faint);">— That is how fear worked in that era.</em>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations">
+  <div class="section-header reveal" style="padding: 0 4rem 5rem; text-align:center;">
+    <span class="section-header-label">World Building</span>
+    <h2>五大地理敘事節點<span>Locations</span></h2>
+  </div>
+  <div class="locations-list">
+    <div class="location-card reveal" data-loc="taipei">
+      <span class="location-icon">ACT I</span>
+      <span class="location-name-zh">台北</span>
+      <span class="location-name-en">Taipei</span>
+      <span class="location-theme">Surveillance</span>
+      <p class="location-symbol">窄長樓梯<br>收音機雜訊<br>查戶口的手電筒</p>
+    </div>
+    <div class="location-card reveal reveal-delay-1" data-loc="keelung">
+      <span class="location-icon">ACT II</span>
+      <span class="location-name-zh">基隆</span>
+      <span class="location-name-en">Keelung</span>
+      <span class="location-theme">Disappearance</span>
+      <p class="location-symbol">鏽蝕的貨輪<br>散不開的濃霧<br>無人的空港</p>
+    </div>
+    <div class="location-card reveal reveal-delay-2" data-loc="mountain">
+      <span class="location-icon">ACT III</span>
+      <span class="location-name-zh">山區</span>
+      <span class="location-name-en">Mountain</span>
+      <span class="location-theme">Trust</span>
+      <p class="location-symbol">石板屋<br>深夜的火堆<br>被收繳的獵槍</p>
+    </div>
+    <div class="location-card reveal reveal-delay-3" data-loc="greenisland">
+      <span class="location-icon">ACT IV</span>
+      <span class="location-name-zh">綠島</span>
+      <span class="location-name-en">Green Island</span>
+      <span class="location-theme">Deprivation</span>
+      <p class="location-symbol">刺眼的白陽<br>碎石路<br>被抹除姓名的編號</p>
+    </div>
+    <div class="location-card reveal" data-loc="machangding">
+      <span class="location-icon">ACT V</span>
+      <span class="location-name-zh">馬場町</span>
+      <span class="location-name-en">Machangding</span>
+      <span class="location-theme">Memory</span>
+      <p class="location-symbol">新店溪的晨霧<br>浸血的土堆<br>芒草花</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXERCISE SYSTEM -->
+<section id="exercise">
+  <div class="section-header reveal">
+    <span class="section-header-label">Motion Recognition</span>
+    <h2>動作辨識系統<span>Your Body is the Controller</span></h2>
+  </div>
+  <div class="exercise-grid">
+    <div class="exercise-card reveal">
+      <div class="exercise-motion">Push-up</div>
+      <span class="exercise-motion-zh">伏地挺身</span>
+      <span class="exercise-attr">ATTR → WILL　意志</span>
+      <p class="exercise-desc">肘關節角度下降至 90° 以下，再上升至 160° 以上，判定完整。</p>
+    </div>
+    <div class="exercise-card reveal reveal-delay-1">
+      <div class="exercise-motion">Squat</div>
+      <span class="exercise-motion-zh">深蹲</span>
+      <span class="exercise-attr">ATTR → ROOT　根基</span>
+      <p class="exercise-desc">膝蓋角度低於 90° 代表完整深蹲，直接轉化為角色的大地連結。</p>
+    </div>
+    <div class="exercise-card reveal reveal-delay-2">
+      <div class="exercise-motion">Plank</div>
+      <span class="exercise-motion-zh">平板支撐</span>
+      <span class="exercise-attr">ATTR → ENDURE　忍耐</span>
+      <p class="exercise-desc">肩膀、臀部、腳踝維持 160°–180° 穩定持續計時。靜止即力量。</p>
+    </div>
+    <div class="exercise-card reveal">
+      <div class="exercise-motion">Burpee</div>
+      <span class="exercise-motion-zh">波比跳</span>
+      <span class="exercise-attr">ATTR → ADAPT　適應</span>
+      <p class="exercise-desc">完整伏地加起立組合，全動作幅度達標。混沌中的生存本能。</p>
+    </div>
+    <div class="exercise-card reveal reveal-delay-1">
+      <div class="exercise-motion">Pull-up</div>
+      <span class="exercise-motion-zh">引體向上</span>
+      <span class="exercise-attr">ATTR → ESCAPE　逃脫</span>
+      <p class="exercise-desc">手腕高於肩膀，下巴過桿判定。每一次引體，都是越獄的排練。</p>
+    </div>
+    <div class="exercise-card reveal reveal-delay-2">
+      <div class="exercise-motion">Core Hold</div>
+      <span class="exercise-motion-zh">捲腹核心</span>
+      <span class="exercise-attr">ATTR → CORE　核心</span>
+      <p class="exercise-desc">軀幹角度穩定度計時。核心是一切力量的根源，也是秘密的藏身處。</p>
+    </div>
+  </div>
+  <div class="exercise-privacy-note reveal">
+    <span class="privacy-icon">PRIVACY<br>PROTECTED</span>
+    <p class="privacy-text">鏡頭資料不上傳、不儲存、即時計算後丟棄。所有姿勢辨識在本地端完成，不傳送任何影像至伺服器。你的身體，只屬於你。</p>
+  </div>
+</section>
+
+<!-- ENDINGS -->
+<section id="endings">
+  <div class="endings-container">
+    <div class="section-header reveal">
+      <span class="section-header-label">No Heroes. No Perfect Ending.</span>
+      <h2>五種結局<span>Five Endings</span></h2>
+    </div>
+    <p class="endings-tagline reveal">
+      沒有絕對的英雄。<br>
+      <strong>沒有「好結局」</strong>，也沒有懲罰。<br>
+      只有你在那個年代，會做出的選擇。
+    </p>
+    <span class="endings-count reveal">
+      5
+      <span>ENDINGS</span>
+    </span>
+    <div class="endings-question reveal">
+      "If I had lived in that era, what would I have done?"
+      <em>如果我活在那個年代，我會怎麼做。</em>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-header reveal">
+    <span class="section-header-label">Production</span>
+    <h2>開發里程碑<span>Roadmap 2026</span></h2>
+  </div>
+  <div class="roadmap-items">
+    <div class="roadmap-item active reveal">
+      <div class="roadmap-date">2026<br>Q1–Q2</div>
+      <div class="roadmap-content">
+        <span class="roadmap-tag">In Progress</span>
+        <h4>MVP v0.1 — 手動輸入版</h4>
+        <p>完成基礎遊戲循環。10個真人可以玩完一整個流程。Unity 6 LTS 架構搭建完成。</p>
+      </div>
+    </div>
+    <div class="roadmap-item reveal reveal-delay-1">
+      <div class="roadmap-date">2026<br>Q2–Q3</div>
+      <div class="roadmap-content">
+        <span class="roadmap-tag">Upcoming</span>
+        <h4>MVP v0.2 — 外觀系統 + MediaPipe 基礎整合</h4>
+        <p>50個用戶，次日留存目標 >40%。動作辨識三種基礎動作上線：Push-up、Squat、Plank。</p>
+      </div>
+    </div>
+    <div class="roadmap-item reveal reveal-delay-2">
+      <div class="roadmap-date">2026<br>Q3</div>
+      <div class="roadmap-content">
+        <span class="roadmap-tag">Planned</span>
+        <h4>Beta — 100個測試用戶</h4>
+        <p>收集留存數據。目標：7日留存 >25%，NPS >30。完整五幕敘事可遊玩。</p>
+      </div>
+    </div>
+    <div class="roadmap-item reveal">
+      <div class="roadmap-date">2026<br>Q4</div>
+      <div class="roadmap-content">
+        <span class="roadmap-tag">Target</span>
+        <h4>v1.0 — App Store 全球上線</h4>
+        <p>雙語發行，鏡頭辨識 v2。目標：1,000 活躍用戶，月流失 &lt;20%。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">BÚ-BĀNG</span>
+  <span class="footer-logo-sub">無　望　｜　Fitness-driven Narrative RPG</span>
+  <p class="footer-manifesto">
+    BÚ-BĀNG 不是一款讓玩家變成英雄的遊戲。<br>
+    它是一款讓玩家問自己那個最難的問題。
+  </p>
+  <ul class="footer-links">
+    <li><a href="#manifesto">Vision</a></li>
+    <li><a href="#acts">Story</a></li>
+    <li><a href="#pillars">Pillars</a></li>
+    <li><a href="#sf-system">System</a></li>
+    <li><a href="#exercise">Training</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+  <div class="footer-bottom">
+    BÚ-BĀNG © 2026 — Awack Studio ｜ Game Developer Handbook v3.0 ｜ 機密文件 — 未發行
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

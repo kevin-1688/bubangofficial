@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#111118"/>
+      <stop offset="100%" style="stop-color:#1A1A26"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" style="stop-color:#C4622D;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#111118;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Surveillance grid lines -->
+  <g opacity="0.04" stroke="#C4622D" stroke-width="1">
+    <line x1="240" y1="0" x2="240" y2="630"/>
+    <line x1="480" y1="0" x2="480" y2="630"/>
+    <line x1="720" y1="0" x2="720" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/>
+  </g>
+
+  <!-- Top border accent -->
+  <rect x="0" y="0" width="1200" height="2" fill="#C4622D" opacity="0.6"/>
+
+  <!-- Ghost title (background) -->
+  <text x="600" y="380" text-anchor="middle" font-family="serif" font-size="320" font-weight="900" fill="#C4622D" opacity="0.04" filter="url(#blur)">無望</text>
+
+  <!-- Year badge -->
+  <text x="600" y="190" text-anchor="middle" font-family="monospace" font-size="16" letter-spacing="8" fill="#7A7060">1952 — 1955　｜　TAIWAN</text>
+
+  <!-- Main title EN -->
+  <text x="600" y="300" text-anchor="middle" font-family="serif" font-size="96" font-weight="900" letter-spacing="-2" fill="#D4C9B8">BÚ-BĀNG</text>
+
+  <!-- Chinese subtitle -->
+  <text x="600" y="360" text-anchor="middle" font-family="serif" font-size="32" letter-spacing="32" fill="#C4622D">無　望</text>
+
+  <!-- Divider -->
+  <line x1="400" y1="390" x2="800" y2="390" stroke="#C4622D" stroke-width="1" opacity="0.4"/>
+
+  <!-- Tagline -->
+  <text x="600" y="430" text-anchor="middle" font-family="serif" font-size="20" fill="#7A7060" font-style="italic">In an era where everything is stripped away,</text>
+  <text x="600" y="458" text-anchor="middle" font-family="serif" font-size="20" fill="#7A7060" font-style="italic">your body is the last frontier of freedom.</text>
+
+  <!-- Genre tag -->
+  <rect x="480" y="490" width="240" height="32" rx="0" fill="none" stroke="#C4622D" stroke-width="1" opacity="0.4"/>
+  <text x="600" y="511" text-anchor="middle" font-family="monospace" font-size="13" letter-spacing="4" fill="#C4622D" opacity="0.8">FITNESS-DRIVEN NARRATIVE RPG</text>
+
+  <!-- Studio -->
+  <text x="600" y="590" text-anchor="middle" font-family="monospace" font-size="13" letter-spacing="4" fill="#3A3530">AWACK STUDIO　｜　2026</text>
+
+  <!-- Bottom border -->
+  <rect x="0" y="628" width="1200" height="2" fill="#C4622D" opacity="0.3"/>
+</svg>
