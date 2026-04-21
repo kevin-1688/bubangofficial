@@ -1,4 +1,4 @@
-// ── BÚ-BĀNG 無望 — main.js v3 ──
+// ── BǑ-BĀNG 無望 — main.js v3 ──
 
 // ── 1. SCROLL REVEAL ──
 const revealObserver = new IntersectionObserver((entries) => {
