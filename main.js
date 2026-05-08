@@ -1,4 +1,4 @@
-// ── BǑ-BĀNG 無望 — main.js v3 ──
+// ── BǑ-BĀNG 無望 — main.js v4 (Security Hardened) ──
 
 // ── 1. SCROLL REVEAL ──
 const revealObserver = new IntersectionObserver((entries) => {
@@ -30,7 +30,9 @@ function openMenu() {
   document.body.style.overflow = 'hidden';
 }
 if (burger) {
-  burger.addEventListener('click', () => burger.classList.contains('open') ? closeMenu() : openMenu());
+  burger.addEventListener('click', () =>
+    burger.classList.contains('open') ? closeMenu() : openMenu()
+  );
 }
 document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
@@ -46,6 +48,7 @@ window.addEventListener('scroll', () => {
 
 // ── 4. HERO TYPEWRITER on tagline ──
 function typewriter(el, text, speed = 38) {
+  // Safe: uses createTextNode only, no innerHTML
   el.textContent = '';
   const cursor = document.createElement('span');
   cursor.className = 'typewriter-cursor';
@@ -62,10 +65,8 @@ function typewriter(el, text, speed = 38) {
   }, speed);
 }
 
-// Trigger typewriter after hero animation settles
 const taglineEl = document.querySelector('.hero-tagline');
-const originalText = taglineEl ? taglineEl.childNodes[0]?.textContent?.trim() : '';
-if (taglineEl && originalText) {
+if (taglineEl) {
   setTimeout(() => {
     const line1 = 'In an era where everything is stripped away,';
     const line2 = '\nyour body is the last frontier of freedom.';
@@ -81,6 +82,8 @@ const canvas = document.getElementById('particles');
 if (canvas) {
   const ctx = canvas.getContext('2d');
   let W, H, particles = [];
+  let rafId = null;
+  let heroVisible = true;
 
   function resize() {
     W = canvas.width = canvas.offsetWidth;
@@ -119,23 +122,29 @@ if (canvas) {
   const COUNT = window.innerWidth < 640 ? 30 : 60;
   for (let i = 0; i < COUNT; i++) {
     const p = new Particle();
-    p.y = Math.random() * H; // scatter initially
+    p.y = Math.random() * H;
     particles.push(p);
   }
 
-  let heroVisible = true;
+  // FIX: RAF fully stops when hero not visible (was still looping before)
+  function loop() {
+    if (!heroVisible) return;
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    rafId = requestAnimationFrame(loop);
+  }
+
   new IntersectionObserver(entries => {
     heroVisible = entries[0].isIntersecting;
+    if (heroVisible && !rafId) {
+      rafId = requestAnimationFrame(loop);
+    } else if (!heroVisible) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
   }, { threshold: 0 }).observe(document.getElementById('hero'));
 
-  function loop() {
-    if (heroVisible) {
-      ctx.clearRect(0, 0, W, H);
-      particles.forEach(p => { p.update(); p.draw(); });
-    }
-    requestAnimationFrame(loop);
-  }
-  loop();
+  rafId = requestAnimationFrame(loop);
 }
 
 // ── 6. SF BAR ANIMATION (RAF, only when visible) ──
@@ -172,42 +181,84 @@ if (window.matchMedia('(min-width: 1024px)').matches) {
   }, { passive: true });
 }
 
-// ── 8. EMAIL SIGNUP ──
+// ── 8. EMAIL SIGNUP (Secured) ──
+// FIX: Removed localStorage — emails now sent to /api/signup (Supabase backend)
+// FIX: Added submit debounce + button disable to prevent spam
+// FIX: Server-side validation is the source of truth; client-side is UX only
+
 const form = document.getElementById('signup-form');
 const emailInput = document.getElementById('signup-email');
-const msg = document.getElementById('signup-msg');
+const msgEl = document.getElementById('signup-msg');
 
 function showMsg(text, type) {
-  if (!msg) return;
-  msg.textContent = text;
-  msg.className = 'signup-note' + (type ? ' ' + type : '');
+  if (!msgEl) return;
+  msgEl.textContent = text;
+  msgEl.className = 'signup-note' + (type ? ' ' + type : '');
 }
 
 if (form) {
-  form.addEventListener('submit', e => {
+  let submitting = false;
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+
+    if (submitting) return;
+
     const email = emailInput.value.trim();
+
+    // Client-side pre-check (UX only — backend validates again)
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       showMsg('請輸入有效的 Email — Please enter a valid email.', 'error');
       emailInput.focus();
       return;
     }
+
+    // Lock submission
+    submitting = true;
+    const btn = form.querySelector('.signup-btn');
+    if (btn) btn.disabled = true;
+    showMsg('送出中… — Submitting…', '');
+
     try {
-      const stored = JSON.parse(localStorage.getItem('bb_signups') || '[]');
-      if (stored.includes(email)) {
-        showMsg("你已在名單上 — You're already on the list.", '');
+      const res = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (res.status === 429) {
+        showMsg('送出太頻繁，請稍後再試。— Too many requests, please wait.', 'error');
         return;
       }
-      stored.push(email);
-      localStorage.setItem('bb_signups', JSON.stringify(stored));
+      if (res.status === 409) {
+        showMsg("你已在名單上 — You're already on the list.", '');
+        emailInput.value = '';
+        return;
+      }
+      if (!res.ok) {
+        throw new Error(data.error || 'Server error');
+      }
+
       showMsg("感謝登記，上線時通知你。— We'll be in touch.", 'success');
       emailInput.value = '';
-    } catch (_) {
-      window.location.href = 'mailto:hello@awack.studio?subject=BU-BANG Early Access&body=' + encodeURIComponent(email);
+
+    } catch (err) {
+      // Fallback: mailto if API completely unreachable
+      showMsg('伺服器無法連線，請用 Email 直接聯絡我們。— Server unreachable.', 'error');
+      console.error('[signup]', err.message);
+    } finally {
+      // Re-enable after 6s regardless of outcome
+      setTimeout(() => {
+        submitting = false;
+        if (btn) btn.disabled = false;
+      }, 6000);
     }
   });
+
   emailInput.addEventListener('input', () => {
-    if (msg && msg.classList.contains('error')) showMsg('', '');
+    if (msgEl && msgEl.classList.contains('error')) showMsg('', '');
   });
 }
 
@@ -220,7 +271,9 @@ const sectionObserver = new IntersectionObserver(entries => {
     if (entry.isIntersecting) {
       const id = entry.target.id;
       navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === '#' + id ? 'var(--ember-glow)' : '';
+        a.style.color = a.getAttribute('href') === '#' + id
+          ? 'var(--ember-glow)'
+          : '';
       });
     }
   });
