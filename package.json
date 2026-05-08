@@ -1,0 +1,16 @@
+{
+  "name": "bubangofficial",
+  "version": "4.0.0",
+  "description": "BǑ-BĀNG 無望 — Official Site",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
