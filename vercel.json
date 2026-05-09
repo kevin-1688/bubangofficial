@@ -1,10 +1,4 @@
 {
-  "functions": {
-    "api/signup.js": {
-      "maxDuration": 10,
-      "memory": 128
-    }
-  },
   "headers": [
     {
       "source": "/api/(.*)",
